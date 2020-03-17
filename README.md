@@ -8,6 +8,11 @@ or
 ./gradlew clean test
 ````
 
+## Propeties
+Properties needed to be set in application.yml
+* api-url - correct get posts API url (if changed https://jsonplaceholder.typicode.com/posts)
+* save-path - path to save posts
+
 ## Build
 To build JAR run command
 ````

@@ -19,8 +19,6 @@ public class PostDownloader implements Downloader {
     @Value("${api-url}")
     private String apiUrl;
 
-    private static final String GET_POSTS_API = "/posts";
-
     public PostDownloader(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
@@ -28,7 +26,7 @@ public class PostDownloader implements Downloader {
     @Override
     public PostDTO[] download() {
         log.info("Downloading posts");
-        ResponseEntity<PostDTO[]> response = restTemplate.getForEntity(apiUrl + GET_POSTS_API, PostDTO[].class);
+        ResponseEntity<PostDTO[]> response = restTemplate.getForEntity(apiUrl, PostDTO[].class);
         PostDTO[] body = response.getBody();
         if (response.getStatusCode().is2xxSuccessful() && Objects.nonNull(body)) {
             log.info("Successfully downloaded {} posts", body.length);
